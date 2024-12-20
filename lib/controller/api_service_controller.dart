@@ -7,21 +7,16 @@ class ApiServiceController extends GetxController {
   static const _baseUrl =
       "https://google-translate1.p.rapidapi.com/language/translate/v2";
 
-  static const _baseUrllang =
-      "https://google-translate1.p.rapidapi.com/language/translate/v2/languages";
-
   Rx<String> sourceLanguage = ''.obs;
   Rx<String> targetLanguage = ''.obs;
   Rx<String> translatedText = ''.obs;
 
   fetchLanguages() async {
-    final response = await Diohandler.dioGet(path: _baseUrllang);
-    print(response);
+    final response = await Diohandler.dioGet(path: "$_baseUrl/languages");
+
     if (response != null &&
         response['data'] != null &&
         response['data']['languages'] != null) {
-      log("API Response: ${response.toString()}");
-      print(response);
       return response['data']['languages'];
     } else {
       throw Exception('Failed to load languages. Response: $response');

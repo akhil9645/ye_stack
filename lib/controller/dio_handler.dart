@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 
 class Diohandler {
@@ -18,14 +16,12 @@ class Diohandler {
       Response response = await Diohandler.dio
           .post(path!, data: body)
           .timeout(Duration(seconds: 60));
-      log(response.toString());
+
       return response.data;
     } catch (e) {
       if (e is DioException) {
-        print('DioException: ${e.message}');
         throw Exception('Request failed: ${e.message}');
       } else {
-        print('Error: $e');
         throw Exception('Unknown error occurred');
       }
     }
