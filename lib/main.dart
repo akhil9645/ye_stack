@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Google Translator',
+      title: 'Ye Stack',
       initialBinding: BindingsBuilder(() {
         Get.put(ApiServiceController());
       }),
